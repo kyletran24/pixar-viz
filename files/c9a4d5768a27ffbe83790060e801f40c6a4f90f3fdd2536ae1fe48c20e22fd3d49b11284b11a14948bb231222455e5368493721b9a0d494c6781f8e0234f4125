@@ -1,0 +1,308 @@
+[
+  {
+    "budget": 60,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "10/2/1998",
+    "revenue": 171.8,
+    "runtime": 83,
+    "title": "Antz",
+    "rating": 6.5
+  },
+  {
+    "budget": 70,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 18, 'name': 'Drama'}, {'id': 10751, 'name': 'Family'}, {'id': 10402, 'name': 'Music'}]",
+    "release_date": "12/15/1998",
+    "revenue": 218.6,
+    "runtime": 99,
+    "title": "The Prince of Egypt",
+    "rating": 7.1
+  },
+  {
+    "budget": 95,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "3/31/2000",
+    "revenue": 76.4,
+    "runtime": 89,
+    "title": "The Road to El Dorado",
+    "rating": 6.9
+  },
+  {
+    "budget": 45,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "6/21/2000",
+    "revenue": 224.8,
+    "runtime": 84,
+    "title": "Chicken Run",
+    "rating": 7
+  },
+  {
+    "budget": 60,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}, {'id': 14, 'name': 'Fantasy'}]",
+    "release_date": "5/16/2001",
+    "revenue": 484.4,
+    "runtime": 90,
+    "title": "Shrek",
+    "rating": 7.8
+  },
+  {
+    "budget": 80,
+    "genres": "[{'id': 37, 'name': 'Western'}, {'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "5/24/2002",
+    "revenue": 122.6,
+    "runtime": 83,
+    "title": "Spirit: Stallion of the Cimarron",
+    "rating": 7.2
+  },
+  {
+    "budget": 60,
+    "genres": "[{'id': 10751, 'name': 'Family'}, {'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}]",
+    "release_date": "7/2/2003",
+    "revenue": 26.3,
+    "runtime": 86,
+    "title": "Sinbad: Legend of the Seven Seas",
+    "rating": 6.7
+  },
+  {
+    "budget": 150,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}, {'id': 14, 'name': 'Fantasy'}]",
+    "release_date": "5/19/2004",
+    "revenue": 919.8,
+    "runtime": 93,
+    "title": "Shrek 2",
+    "rating": 7.2
+  },
+  {
+    "budget": 75,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "9/20/2004",
+    "revenue": 367.3,
+    "runtime": 90,
+    "title": "Shark Tale",
+    "rating": 6
+  },
+  {
+    "budget": 75,
+    "genres": "[{'id': 10751, 'name': 'Family'}, {'id': 16, 'name': 'Animation'}]",
+    "release_date": "5/25/2005",
+    "revenue": 532.7,
+    "runtime": 86,
+    "title": "Madagascar",
+    "rating": 6.9
+  },
+  {
+    "budget": 30,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "9/4/2005",
+    "revenue": 192.5,
+    "runtime": 85,
+    "title": "The Curse of the Were-Rabbit",
+    "rating": 7.4
+  },
+  {
+    "budget": 80,
+    "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "4/22/2006",
+    "revenue": 343.4,
+    "runtime": 83,
+    "title": "Over the Hedge",
+    "rating": 6.7
+  },
+  {
+    "budget": 149,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "10/22/2006",
+    "revenue": 64.5,
+    "runtime": 85,
+    "title": "Flushed Away",
+    "rating": 6.6
+  },
+  {
+    "budget": 160,
+    "genres": "[{'id': 14, 'name': 'Fantasy'}, {'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "5/17/2007",
+    "revenue": 799,
+    "runtime": 93,
+    "title": "Shrek the Third",
+    "rating": 6.1
+  },
+  {
+    "budget": 150,
+    "genres": "[{'id': 10751, 'name': 'Family'}, {'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}, {'id': 35, 'name': 'Comedy'}]",
+    "release_date": "10/28/2007",
+    "revenue": 287.6,
+    "runtime": 91,
+    "title": "Bee Movie",
+    "rating": 6.1
+  },
+  {
+    "budget": 130,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}, {'id': 35, 'name': 'Comedy'}]",
+    "release_date": "6/4/2008",
+    "revenue": 631.7,
+    "runtime": 90,
+    "title": "Kung Fu Panda",
+    "rating": 7.5
+  },
+  {
+    "budget": 150,
+    "genres": "[{'id': 10751, 'name': 'Family'}, {'id': 16, 'name': 'Animation'}]",
+    "release_date": "10/30/2008",
+    "revenue": 603.9,
+    "runtime": 89,
+    "title": "Madagascar: Escape 2 Africa",
+    "rating": 6.6
+  },
+  {
+    "budget": 175,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}, {'id': 12, 'name': 'Adventure'}, {'id': 878, 'name': 'Science Fiction'}]",
+    "release_date": "3/19/2009",
+    "revenue": 381.5,
+    "runtime": 94,
+    "title": "Monsters vs Aliens",
+    "rating": 6.4
+  },
+  {
+    "budget": 165,
+    "genres": "[{'id': 14, 'name': 'Fantasy'}, {'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "3/5/2010",
+    "revenue": 494.9,
+    "runtime": 98,
+    "title": "How to Train Your Dragon",
+    "rating": 8.1
+  },
+  {
+    "budget": 165,
+    "genres": "[{'id': 35, 'name': 'Comedy'}, {'id': 12, 'name': 'Adventure'}, {'id': 14, 'name': 'Fantasy'}, {'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "5/16/2010",
+    "revenue": 752.6,
+    "runtime": 93,
+    "title": "Shrek Forever After",
+    "rating": 6.3
+  },
+  {
+    "budget": 130,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 28, 'name': 'Action'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}, {'id': 878, 'name': 'Science Fiction'}]",
+    "release_date": "10/28/2010",
+    "revenue": 321.9,
+    "runtime": 95,
+    "title": "Megamind",
+    "rating": 7.2
+  },
+  {
+    "budget": 150,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "5/25/2011",
+    "revenue": 665.7,
+    "runtime": 91,
+    "title": "Kung Fu Panda 2",
+    "rating": 7.2
+  },
+  {
+    "budget": 145,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "6/6/2012",
+    "revenue": 746.9,
+    "runtime": 93,
+    "title": "Madagascar 3: Europe's Most Wanted",
+    "rating": 6.8
+  },
+  {
+    "budget": 145,
+    "genres": "[{'id': 14, 'name': 'Fantasy'}, {'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "11/21/2012",
+    "revenue": 306.9,
+    "runtime": 97,
+    "title": "Rise of the Guardians",
+    "rating": 7.3
+  },
+  {
+    "budget": 135,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}, {'id': 14, 'name': 'Fantasy'}]",
+    "release_date": "3/20/2013",
+    "revenue": 585.2,
+    "runtime": 98,
+    "title": "The Croods",
+    "rating": 7.2
+  },
+  {
+    "budget": 135,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "7/11/2013",
+    "revenue": 282.6,
+    "runtime": 96,
+    "title": "Turbo",
+    "rating": 6.4
+  },
+  {
+    "budget": 145,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "2/7/2014",
+    "revenue": 272.9,
+    "runtime": 92,
+    "title": "Mr. Peabody & Sherman",
+    "rating": 6.8
+  },
+  {
+    "budget": 145,
+    "genres": "[{'id': 14, 'name': 'Fantasy'}, {'id': 28, 'name': 'Action'}, {'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "6/12/2014",
+    "revenue": 609.1,
+    "runtime": 102,
+    "title": "How to Train Your Dragon 2",
+    "rating": 7.8
+  },
+  {
+    "budget": 132,
+    "genres": "[{'id': 10751, 'name': 'Family'}, {'id': 16, 'name': 'Animation'}, {'id': 12, 'name': 'Adventure'}, {'id': 35, 'name': 'Comedy'}]",
+    "release_date": "11/22/2014",
+    "revenue": 373.6,
+    "runtime": 92,
+    "title": "Penguins of Madagascar",
+    "rating": 6.7
+  },
+  {
+    "budget": 135,
+    "genres": "[{'id': 14, 'name': 'Fantasy'}, {'id': 35, 'name': 'Comedy'}, {'id': 16, 'name': 'Animation'}, {'id': 878, 'name': 'Science Fiction'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "3/18/2015",
+    "revenue": 368.9,
+    "runtime": 94,
+    "title": "Home",
+    "rating": 6.6
+  },
+  {
+    "budget": 145,
+    "genres": "[{'id': 28, 'name': 'Action'}, {'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "1/23/2016",
+    "revenue": 521.1,
+    "runtime": 95,
+    "title": "Kung Fu Panda 3",
+    "rating": 7.1
+  },
+  {
+    "budget": 125,
+    "genres": "[{'id': 12, 'name': 'Adventure'}, {'id': 16, 'name': 'Animation'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "10/13/2016",
+    "revenue": 346.9,
+    "runtime": 92,
+    "title": "Trolls",
+    "rating": 6.5
+  },
+  {
+    "budget": 125,
+    "genres": "[{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "3/23/2017",
+    "revenue": 498.8,
+    "runtime": 97,
+    "title": "The Boss Baby",
+    "rating": 6.3
+  },
+  {
+    "budget": 38,
+    "genres": "[{'id': 28, 'name': 'Action'}, {'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]",
+    "release_date": "6/1/2017",
+    "revenue": 110.8,
+    "runtime": 89,
+    "title": "Captain Underpants: The First Epic Movie",
+    "rating": 6.2
+  }
+]

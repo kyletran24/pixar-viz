@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Analysis of the success of Pixar movies against popular competitors</title>
+<h1>Analysis of the success of Pixar movies against popular competitors</h1>
+
+<link href="./inspector.css" rel="stylesheet" type="text/css">
+<link href="./index.css" rel="stylesheet" type="text/css">
+<body>
+<div id="year_threshold"></div>
+<div id="order"></div>
+<div id="main_plot"></div>
+<script type="module">
+
+    import define from "./index.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+
+    const runtime = new Runtime();
+
+    // const main = runtime.module(define, Inspector.into(document.body));
+
+    function renderNotebook(notebook, cellNames) {
+        runtime.module(notebook, name => {
+            if (cellNames.includes(name)) {
+                if (name.includes("viewof")) {
+                    return new Inspector(document.querySelector(`#${name.substr(7)}`));
+                } else return new Inspector(document.querySelector(`#${name}`));
+            } else {
+                return true
+            }
+        });
+    }
+
+    const main = renderNotebook(define, ["viewof year_threshold", "viewof order", "main_plot"]);
+
+</script>
