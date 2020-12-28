@@ -1,33 +1,19 @@
 # Analysis of the success of Pixar movies against popular competitors
 
-https://observablehq.com/d/e4c1cd3cc512dbf5@1659
+This is a solo project I worked on in Data Visualization (CS3281) class at Vanderbilt University taught by Professor Matthew Berger, using D3 and SVG frameworks on the Observable platform
 
-View this notebook in your browser by running a web server in this folder. For
-example:
+## Background and Motivaton 
 
-~~~sh
-python -m SimpleHTTPServer
-~~~
+I had always been a fan of Pixar Studio and their various fascinating animated movies, but I've only interacted with Pixar as a consumer. In this project, I acted on my curiosity as a data visualization student and looked into the data about Pixar movies to analyze their success as a whole as well as juxtapose them against popular competitors like Disney and Dreamworks.
 
-Or, use the [Observable Runtime](https://github.com/observablehq/runtime) to
-import this module directly into your application. To npm install:
+## Data Sets
 
-~~~sh
-npm install @observablehq/runtime@4
-npm install https://api.observablehq.com/d/e4c1cd3cc512dbf5.tgz?v=3
-~~~
+The data I extracted comes from these 4 data sets:
 
-Then, import your notebook and the runtime as:
+- Pixar Movies Dataset: https://www.dropbox.com/s/zi9ysyjqrg3ywsp/PixarMovies.csv?dl=0
 
-~~~js
-import {Runtime, Inspector} from "@observablehq/runtime";
-import define from "e4c1cd3cc512dbf5";
-~~~
+- Disney Movies Dataset: https://data.world/kgarrett/disney-character-success-00-16/workspace/file?filename=disney_movies_total_gross.csv
 
-To log the value of the cell named “foo”:
+- IMDb Movies Dataset: https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+ratings.csv
 
-~~~js
-const runtime = new Runtime();
-const main = runtime.module(define);
-main.value("foo").then(value => console.log(value));
-~~~
+- MovieLens Dataset: https://www.kaggle.com/rounakbanik/the-movies-dataset?select=movies_metadata.csv
