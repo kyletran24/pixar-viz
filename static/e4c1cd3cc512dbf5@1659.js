@@ -14,9 +14,9 @@ md`
 )});
   main.variable(observer("viewof year_threshold")).define("viewof year_threshold", ["rangeSlider"], function(rangeSlider){return(
 rangeSlider({
-  min: 1947, 
-  max: 2019, 
-  step: 1, 
+  min: 1947,
+  max: 2019,
+  step: 1,
   value: [2016, 2019],
   description: 'Show all movies in this time range'
 })
@@ -36,88 +36,88 @@ select({
   // Declare canvas
   let svg = d3.create('svg').attr('width', width).attr('height', height);
   let g = svg.append('g').attr('transform', `translate(${pad},${pad})`);
-  
-  
+
+
   // Error checking
   // Only display visualization if there are Pixar movies and Disney/DW movies to compare with in time range
-  if (pixar_data.length && (disney_data.length || dw_data.length) ) {  
-  
+  if (pixar_data.length && (disney_data.length || dw_data.length) ) {
+
   /*                                            BEGIN OF TOP SECTION                                          */
-    
-    //                  NOTES BEGIN      
-    
+
+    //                  NOTES BEGIN
+
     g.append("text")
       .text("abc")
       .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap')
       .attr("x", -48)
-      .attr("y", -40) 
+      .attr("y", -40)
       .attr("font-size", "12px")
       .text("All figures are shown by hundred-million dollars")
       .attr("font-style","italic");
-  
+
      g.append("text")
       .text("abc")
       .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap')
       .attr("x", -48)
-      .attr("y", -26) 
+      .attr("y", -26)
       .attr("font-size", "12px")
       .text("Showing movies from " + year_threshold[0] +" to "+ year_threshold[1])
       .attr("font-style","italic");
-    
+
       g.append("text")
       .text("abc")
       .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap')
       .attr("x", 780)
-      .attr("y", -40) 
+      .attr("y", -40)
       .attr("font-size", "12px")
       .text("Hover over bars for more info.")
       .attr("font-style","italic");
-  
+
       //                  NOTES END
-    
-    
+
+
       //                  LEFT-SIDE IMAGES SECTION BEGIN
-  
+
       g.append("svg:image")
        .attr("xlink:href",       "https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/DreamWorks_Animation_SKG_logo_with_fishing_boy.svg/1200px-DreamWorks_Animation_SKG_logo_with_fishing_boy.svg.png")
        .attr("x", -52)
        .attr("y", 5)
        .attr("width", 50)
        .attr("height", 30);
-  
+
       g.append("svg:image")
       .attr("xlink:href", "https://i.pinimg.com/originals/dc/5f/ee/dc5fee0189b193c8ebf8e19076ad56f0.png")
       .attr("x", -52)
       .attr("y", 55)
       .attr("width", 50)
       .attr("height", 30);
-  
+
       g.append("svg:image")
       .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/DreamWorks_Animation_SKG_logo_with_fishing_boy.svg/1200px-DreamWorks_Animation_SKG_logo_with_fishing_boy.svg.png")
       .attr("x", -50)
       .attr("y", 100)
       .attr("width", 50)
       .attr("height", 30);
-  
+
       g.append("svg:image")
         .attr("xlink:href", "https://i.pinimg.com/originals/dc/5f/ee/dc5fee0189b193c8ebf8e19076ad56f0.png")
         .attr("x", -52)
         .attr("y", 155)
         .attr("width", 50)
         .attr("height", 30);
-  
+
       g.append("svg:image")
         .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Pixar_logo.svg/1024px-Pixar_logo.svg.png")
         .attr("x", -58)
         .attr("y", 190 + 250 * num_films/16)
         .attr("width", 60)
         .attr("height", 40);
-  
+
      //                  LEFT-SIDE IMAGES SECTION END
-  
+
       let top_g = g.append("g")
         .attr("class", "top_g");
-  
+
       // // Big outer outline rect for top_g
       // let compare_rect = top_g.append("rect")
       //   .attr('width', plot_size)
@@ -125,7 +125,7 @@ select({
       //   .attr('stroke', d3.hcl(0,0,60))
       //   .attr('stroke-width', .5)
       //   .attr('fill', 'none')
-  
+
       // Group elements corresponding to each row
       let compare_g = top_g.selectAll("g")
         .data(compare_arr)
@@ -133,7 +133,7 @@ select({
         .append("g")
         .attr('transform', d => `translate(0,${compare_scale(d.title)})`)
         .attr('class', 'compare_g');
-  
+
       // Outline rects for each row
       // let top_budget_outline = compare_g.append("rect")
       //   .attr('width', plot_size)
@@ -141,18 +141,18 @@ select({
       //   .attr('stroke', d3.hcl(120,0,50))
       //   .attr('stroke-width', 0.5)
       //   .attr('fill', 'none')
-      //   
+      //
 
       // Labels for reach row
       compare_g
         .append("text")
         .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
         .attr("x", 10)
-        .attr("y", d => d.budget ? 20 : 10)
+        .attr("y", d => d.budget >= 0 ? 20 : 10)
         .attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8)
         .attr("font-family", "Merriweather")
-        .attr("font-size", d => d.budget ? "16px" : "12px")
-        .attr("font-style", d => d.budget ? "normal" : "italic")
+        .attr("font-size", d => d.budget >= 0 ? "16px" : "12px")
+        .attr("font-style", d => d.budget >= 0 ? "normal" : "italic")
         .text(d => d.title);
 
       // Budget rects for top section
@@ -202,10 +202,10 @@ select({
       //   .attr('fill', 'none').attr('stroke', d3.hcl(0,0,60))
       //   .attr('stroke-width', d => d.budget? .8 : 0)
 
-    
-  
+
+
   /*                                            END OF TOP SECTION                                        */
-  
+
         // Divider line between top and bottom
        g.append("rect")
         .attr("y", 195)
@@ -213,14 +213,14 @@ select({
         .attr('width', plot_size+15)
         .attr('height', 0.5)
         .attr('fill', 'black').attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-  
+
   /*                                            BEGIN OF BOTTOM SECTION                                        */
-  
+
       let bot_g = g.append("g")
         .attr('transform', d => `translate(0,${plot_size/3.4})`);
 
       // // Big outer outline rect for bot_g
-      // let bot_rect = bot_g.append("rect")  
+      // let bot_rect = bot_g.append("rect")
       //   .attr('width', plot_size)
       //   .attr('height', plot_size*5/7)
       //   .attr('stroke', d3.hcl(0,0,60))
@@ -298,12 +298,12 @@ select({
       //   .attr('height', 20)
       //   .attr('fill', 'none').attr('stroke', d3.hcl(0,0,60))
       //   .attr('stroke-width', d => d.budget? .8 : 0)
-    
-    
+
+
 /*                                            END OF BOTTOM SECTION                                        */
 
 //                                            BEGIN OF LABELS SECTION
-  
+
       // Budget label
       let budget_label = g.append("text")
         .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
@@ -352,10 +352,10 @@ select({
         .attr('width', 15)
         .attr('height', 15)
         .attr('fill', d3.hcl(60,15,68)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-  
-   
+
+
 //                                            END OF LABELS SECTION
-    
+
 //                                            BEGIN OF AXIS SECTION
         // Budget Axis
         let budget_axis = d3.axisTop().scale(budget_scale).ticks(5);
@@ -380,49 +380,49 @@ select({
         rev_axis_g.call(rr_axis);
 
 //                                            END OF AXIS SECTION
-   
+
 //                                            BEGIN OF SIDEBAR SECTION
 
       let sidebar = g.append("g")
         .attr('transform', d => `translate(720, 220)`)
         .attr('class','sidebar');
-    
+
 
 //                                            END OF SIDEBAR SECTION  
-  
-      
+
+
   // Applying Interactions
       hover_budget(g);
       hover_rr(g)
-    
-    
+
+
   }
-  
-  
-  
+
+
+
   //                                           ERROR CHECKING
-  
-  else if (!(disney_data.length || dw_data.length)) {
+
+  else if (!pixar_data.length) {
     g.append("text")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
     .attr("x", plot_size/2-150)
-    .attr("y", plot_size/2) 
+    .attr("y", plot_size/2)
     .attr("font-size", "20px")
     .text("No Pixar movie in time range. Please adjust slider.")
   }
-  
+
   else  {
     g.append("text")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
     .attr("x", plot_size/2-175)
-    .attr("y", plot_size/2) 
+    .attr("y", plot_size/2)
     .attr("font-size", "20px")
     .text("No Disney/DreamWorks movie in time range. Please adjust slider.")
-  } 
-  
+  }
+
   return svg.node()
-  
-  
+
+
 }
 );
   main.variable(observer()).define(["md"], function(md){return(
@@ -433,15 +433,15 @@ md`
 )});
   main.variable(observer("hover_budget")).define("hover_budget", ["d3","compare_scale","budget_extent","plot_size","addWebFont","pixar_film_scale","dw_top","disney_top","dw_avg","disney_avg"], function(d3,compare_scale,budget_extent,plot_size,addWebFont,pixar_film_scale,dw_top,disney_top,dw_avg,disney_avg){return(
 (g) => {
-  
+
   // Budget Rects on top_g
    g.selectAll('.top-budget-rect').on('mouseover', function(d) {
      let budget = d.budget;
-     
+
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + compare_scale(d.title);
-     
+
      // Vertical line for comparison
     g.append('rect')
       .attr('id','vert-line')
@@ -450,7 +450,7 @@ md`
       .attr('width', 0.25)
       .attr('height', plot_size+20)
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .6).attr('fill', d3.hcl(120,15,68));
-     
+
      // Box for on-demand info
     g.append('rect')
       .attr('id','budget-inset')
@@ -460,7 +460,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-     
+
      // Text for on-demand info
     g.append('text')
      .attr('id','text-inset')
@@ -469,11 +469,11 @@ md`
      .text("Budget: " + budget)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-     
+
      // Select out movies with lower budget while on hover
      g.selectAll(".pixar_g").filter(item => item.budget < budget)
       .attr('fill', d3.hcl(73, 10, 92));
-     
+
      // Side bar text
      g.selectAll('.sidebar').append("text")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
@@ -483,7 +483,7 @@ md`
     .attr('font-size','11px')
     .text("Pixar movies with less budget")
     .attr('class','legends');
-     
+
      // Side bar legend
      g.selectAll('.sidebar').append("rect")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
@@ -494,24 +494,24 @@ md`
     .attr('height', 18)
     .attr('fill', d3.hcl(73, 10, 92))
      .attr('class','legends')
-     
-     
+
+
    });
-  
+
   g.selectAll('.top-budget-rect').on('mousemove', function(d) {
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + compare_scale(d.title);
-      
+
     g.select('#budget-inset')
       .attr("x", tx + 5 )
       .attr("y", ty + 5);
-    
+
     g.select('#text-inset')
       .attr("x", tx + 12 )
       .attr("y", ty + 20)
   });
-  
+
   g.selectAll('.top-budget-rect').on('mouseout', function(d)  {
     g.select('#vert-line').remove();
     g.select('#budget-inset').remove();
@@ -520,21 +520,21 @@ md`
       .attr('fill', 'none');
     g.selectAll('.legends').remove()
   });
- 
-  
+
+
   // For budget rects of bottom sections
   g.selectAll('.bot-budget-rect').on('mouseover', function(d) {
      let budget = d.budget;
-     
+
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + pixar_film_scale(d.title);
-     
+
      let sub_g = g.append('g')
                     .attr('transform', d => `translate(0,${plot_size/3.4})`);
-    
+
      let vert_line_pos = 229 + 220 * (1 - (budget / budget_extent[1]));
-     
+
     sub_g.append('rect')
       .attr('id','vert-line')
       .attr("x",  vert_line_pos)
@@ -542,7 +542,7 @@ md`
       .attr('width', 0.25)
       .attr('height', plot_size+20)
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .6).attr('fill', d3.hcl(120,15,68));
-     
+
     sub_g.append('rect')
       .attr('id','budget-inset')
       .attr("x", tx + 5 )
@@ -551,7 +551,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-     
+
     sub_g.append('text')
      .attr('id','text-inset')
      .attr("x", tx + 12)
@@ -559,12 +559,12 @@ md`
      .text("Budget: " + budget)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     let dw_top_diff = 220* Math.abs(budget - dw_top.budget)/budget_extent[1];
     let disney_top_diff = 220*Math.abs(budget - disney_top.budget)/budget_extent[1];
     let dw_avg_diff =220* Math.abs(budget - dw_avg.budget)/budget_extent[1];
     let disney_avg_diff =220* Math.abs(budget - disney_avg.budget)/budget_extent[1];
-    
+
     // light squares for comparison
     g.append('rect')
     .attr("class","hover_compare")
@@ -573,7 +573,7 @@ md`
     .attr('width', dw_top_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(120,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", budget > disney_top.budget ? vert_line_pos : vert_line_pos - disney_top_diff)
@@ -581,7 +581,7 @@ md`
     .attr('width', disney_top_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(120,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", budget > dw_avg.budget ? vert_line_pos : vert_line_pos - dw_avg_diff)
@@ -589,7 +589,7 @@ md`
     .attr('width', dw_avg_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(120,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", budget > disney_avg.budget ? vert_line_pos : vert_line_pos - disney_avg_diff)
@@ -597,7 +597,7 @@ md`
     .attr('width', disney_avg_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(120,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     // comparison texts and surrounding rects
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -607,7 +607,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio1 = ( Math.abs(budget - dw_top.budget)/ budget * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -616,7 +616,7 @@ md`
      .text(budget > dw_top.budget ? ratio1 + "% less budget" : ratio1 + "% more budget")
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------2
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -626,7 +626,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio2 = ( Math.abs(budget - disney_top.budget)/ budget * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -635,7 +635,7 @@ md`
      .text(budget > disney_top.budget ? ratio2 + "% less budget" : ratio2 + "% more budget")
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------3
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -645,7 +645,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio3 = ( Math.abs(budget - dw_avg.budget)/ budget * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -654,7 +654,7 @@ md`
      .text(budget > dw_avg.budget ? ratio3 + "% less budget" : ratio3 + "% more budget")
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------4
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -664,7 +664,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio4 = ( Math.abs(budget - disney_avg.budget)/ budget * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -673,23 +673,23 @@ md`
      .text(budget > disney_avg.budget ? ratio4 + "% less budget" : ratio4 + "% more budget")
      .attr("font-size", "12px")
      .attr("font-weight", "italic")
-    
+
    });
-  
+
   g.selectAll('.bot-budget-rect').on('mousemove', function(d) {
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + pixar_film_scale(d.title);
-      
+
     g.select('#budget-inset')
       .attr("x", tx + 5 )
       .attr("y", ty + 5);
-    
+
     g.select('#text-inset')
       .attr("x", tx + 12 )
       .attr("y", ty + 20)
   });
-  
+
   g.selectAll('.bot-budget-rect').on('mouseout', function(d)  {
     g.select('#vert-line').remove();
     g.select('#budget-inset').remove();
@@ -706,11 +706,11 @@ md`
  g.selectAll('.top-rate-rect').on('mouseover', function(d) {
      let rating = d.rating;
      let rev = d.revenue;
-     
+
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + compare_scale(d.title);
-     
+
     g.append('rect')
       .attr('id','vert-line')
       .attr("x", 451 + 220 * (rating / rate_extent[1]) )
@@ -718,7 +718,7 @@ md`
       .attr('width', 0.25)
       .attr('height', plot_size+25)
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .6).attr('fill', d3.hcl(60,15,68));
-     
+
     g.append('rect')
       .attr('id','rr-inset')
       .attr("x", tx + 5 )
@@ -727,7 +727,7 @@ md`
       .attr('height', 35)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-     
+
     g.append('text')
      .attr('id','text-inset1')
      .attr("x", tx + 12)
@@ -735,7 +735,7 @@ md`
      .text("Rating: " + rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-   
+
    g.append('text')
      .attr('id','text-inset2')
      .attr("x", tx + 12)
@@ -743,10 +743,10 @@ md`
      .text("Revenue: " + rev)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-   
+
    g.selectAll(".pixar_g").filter(item => item.rating > rating)
       .attr('fill', d3.hcl(73, 10, 92));
-     
+
      g.selectAll('.sidebar').append("text")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
     .attr("x", 10)
@@ -755,7 +755,7 @@ md`
     .attr('font-size','11px')
     .text("Pixar movies with higher rating")
     .attr('class','legends');
-     
+
      g.selectAll('.sidebar').append("rect")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
     .attr("x", -15)
@@ -765,49 +765,49 @@ md`
     .attr('height', 18)
     .attr('fill', d3.hcl(73, 10, 92))
      .attr('class','legends')
-     
-     
+
+
    });
-  
+
   g.selectAll('.top-rate-rect').on('mousemove', function(d) {
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + compare_scale(d.title);
-      
+
     g.select('#rr-inset')
       .attr("x", tx + 5 )
       .attr("y", ty + 5);
-    
+
     g.select('#text-inset1')
       .attr("x", tx + 12 )
       .attr("y", ty + 18);
-    
+
     g.select('#text-inset2')
       .attr("x", tx + 12 )
       .attr("y", ty + 33)
   });
-  
+
   g.selectAll('.top-rate-rect').on('mouseout', function(d)  {
     g.select('#vert-line').remove();
     g.select('#rr-inset').remove();
     g.select('#text-inset1').remove();
     g.select('#text-inset2').remove();
-    
+
     g.selectAll(".pixar_g").filter(item => item.rating > d.rating)
       .attr('fill', 'none');
     g.selectAll('.legends').remove()
   });
-  
-  
+
+
   // Revenue rects for top
   g.selectAll('.top-rev-rect').on('mouseover', function(d) {
      let rev = d.revenue;
      let rating = d.rating;
-     
+
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + compare_scale(d.title);
-     
+
     g.append('rect')
       .attr('id','vert-line')
       .attr("x", 451 + 220 * (rev / rev_extent[1]) )
@@ -815,7 +815,7 @@ md`
       .attr('width', 0.25)
       .attr('height', plot_size+25)
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .6).attr('fill', d3.hcl(240,15,68));
-     
+
     g.append('rect')
       .attr('id','rr-inset')
       .attr("x", tx + 5 )
@@ -824,7 +824,7 @@ md`
       .attr('height', 35)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-     
+
     g.append('text')
      .attr('id','text-inset1')
      .attr("x", tx + 12)
@@ -832,7 +832,7 @@ md`
      .text("Rating: " + rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-   
+
    g.append('text')
      .attr('id','text-inset2')
      .attr("x", tx + 12)
@@ -840,10 +840,10 @@ md`
      .text("Revenue: " + rev)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     g.selectAll(".pixar_g").filter(item => item.revenue > rev)
       .attr('fill', d3.hcl(73, 10, 92));
-     
+
      g.selectAll('.sidebar').append("text")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
     .attr("x", 10)
@@ -852,7 +852,7 @@ md`
     .attr('font-size','11px')
     .text("Pixar movies with higher revenue")
     .attr('class','legends');
-     
+
      g.selectAll('.sidebar').append("rect")
     .call(addWebFont, 'Merriweather', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap')
     .attr("x", -15)
@@ -862,54 +862,54 @@ md`
     .attr('height', 18)
     .attr('fill', d3.hcl(73, 10, 92))
      .attr('class','legends')
-     
-     
+
+
    });
-  
+
   g.selectAll('.top-rev-rect').on('mousemove', function(d) {
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + compare_scale(d.title);
-      
+
     g.select('#rr-inset')
       .attr("x", tx + 5 )
       .attr("y", ty + 5);
-    
+
     g.select('#text-inset1')
       .attr("x", tx + 12 )
       .attr("y", ty + 18);
-    
+
     g.select('#text-inset2')
       .attr("x", tx + 12 )
       .attr("y", ty + 33)
-    
+
   });
-  
+
   g.selectAll('.top-rev-rect').on('mouseout', function(d)  {
     g.select('#vert-line').remove();
     g.select('#rr-inset').remove();
     g.select('#text-inset1').remove();
     g.select('#text-inset2').remove();
-    
+
     g.selectAll(".pixar_g").filter(item => item.revenue > d.revenue)
       .attr('fill', 'none');
     g.selectAll('.legends').remove()
   });
-  
+
   // Rating rects for bottom
   g.selectAll('.bot-rate-rect').on('mouseover', function(d) {
      let rating = d.rating;
      let rev = d.revenue;
-     
+
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + pixar_film_scale(d.title);
-     
+
     let sub_g = g.append('g')
                     .attr('transform', d => `translate(0,${plot_size/3.4})`);
-    
+
     let vert_line_pos = 451 + 220 * (rating / rate_extent[1]);
-    
+
     sub_g.append('rect')
       .attr('id','vert-line')
       .attr("x",  vert_line_pos)
@@ -917,7 +917,7 @@ md`
       .attr('width', 0.25)
       .attr('height', plot_size+25)
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .6).attr('fill', d3.hcl(60,15,68));
-     
+
     sub_g.append('rect')
       .attr('id','rr-inset')
       .attr("x", tx + 5 )
@@ -926,7 +926,7 @@ md`
       .attr('height', 35)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-     
+
     sub_g.append('text')
      .attr('id','text-inset1')
      .attr("x", tx + 12)
@@ -934,7 +934,7 @@ md`
      .text("Rating: " + rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-   
+
    sub_g.append('text')
      .attr('id','text-inset2')
      .attr("x", tx + 12)
@@ -942,12 +942,12 @@ md`
      .text("Revenue: " + rev)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     let dw_top_rate_diff = 220* Math.abs(rating - dw_top.rating)/rate_extent[1];
     let disney_top_rate_diff = 220*Math.abs(rating - disney_top.rating)/rate_extent[1];
     let dw_avg_rate_diff =220* Math.abs(rating - dw_avg.rating)/rate_extent[1];
     let disney_avg_rate_diff =220* Math.abs(rating - disney_avg.rating)/rate_extent[1];
-    
+
     // light squares for comparison
     g.append('rect')
     .attr("class","hover_compare")
@@ -956,7 +956,7 @@ md`
     .attr('width', dw_top_rate_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(60,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", rating > disney_top.rating ?  vert_line_pos - disney_top_rate_diff : vert_line_pos)
@@ -964,7 +964,7 @@ md`
     .attr('width', disney_top_rate_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(60,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", rating > dw_avg.rating ? vert_line_pos - dw_avg_rate_diff : vert_line_pos)
@@ -972,7 +972,7 @@ md`
     .attr('width', dw_avg_rate_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(60,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", rating > disney_avg.rating ?  vert_line_pos - disney_avg_rate_diff : vert_line_pos)
@@ -980,7 +980,7 @@ md`
     .attr('width', disney_avg_rate_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(60,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     // comparison texts and surrounding rects
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -990,17 +990,17 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio1 = ( Math.abs(rating - dw_top.rating)/ rating * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
      .attr("x", 320)
      .attr("y", 20)
-     .text(rating > dw_top.rating ? "Lower rating: " +dw_top.rating +" vs " +rating  
+     .text(rating > dw_top.rating ? "Lower rating: " +dw_top.rating +" vs " +rating
            : "Higher rating: " +dw_top.rating +" vs " +rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------2
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1010,17 +1010,17 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio2 = ( Math.abs(rating - disney_top.rating)/ rating * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
      .attr("x", 320)
      .attr("y", 70.5)
-     .text(rating > disney_top.rating ? "Lower rating: " +disney_top.rating +" vs " +rating  
+     .text(rating > disney_top.rating ? "Lower rating: " +disney_top.rating +" vs " +rating
            : "Higher rating: " +disney_top.rating +" vs " +rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------3
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1030,17 +1030,17 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio3 = ( Math.abs(rating - dw_avg.rating)/ rating * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
      .attr("x", 320)
      .attr("y", 121.5)
-     .text(rating > dw_avg.rating ? "Lower rating: " +dw_avg.rating +" vs " +rating  
+     .text(rating > dw_avg.rating ? "Lower rating: " +dw_avg.rating +" vs " +rating
            : "Higher rating: " +dw_avg.rating +" vs " +rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------4
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1050,38 +1050,38 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio4 = ( Math.abs(rating - disney_avg.rating)/ rating * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
      .attr("x", 320)
      .attr("y", 172)
-     .text(rating > disney_avg.rating ? "Lower rating: " +disney_avg.rating +" vs " +rating  
+     .text(rating > disney_avg.rating ? "Lower rating: " +disney_avg.rating +" vs " +rating
            : "Higher rating: " +disney_avg.rating +" vs " +rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic")
-     
+
    });
-  
+
   g.selectAll('.bot-rate-rect').on('mousemove', function(d) {
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + pixar_film_scale(d.title);
-      
+
     g.select('#rr-inset')
       .attr("x", tx + 5 )
       .attr("y", ty + 5);
-    
+
     g.select('#text-inset1')
       .attr("x", tx + 12 )
       .attr("y", ty + 18);
-    
+
     g.select('#text-inset2')
       .attr("x", tx + 12 )
       .attr("y", ty + 33)
   });
-  
-  
+
+
   g.selectAll('.bot-rate-rect').on('mouseout', function(d)  {
     g.select('#vert-line').remove();
     g.select('#rr-inset').remove();
@@ -1091,21 +1091,21 @@ md`
     g.selectAll(".text_compare").remove();
     g.selectAll(".text-compare-rect").remove()
   });
-  
-  
+
+
   // Revenue rects for bottom
   g.selectAll('.bot-rev-rect').on('mouseover', function(d) {
      let rev = d.revenue;
      let rating = d.rating;
-     
+
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + pixar_film_scale(d.title);
-     
+
     let sub_g = g.append('g')
                     .attr('transform', d => `translate(0,${plot_size/3.4})`);
     let vert_line_pos = 451 + 220 * (rev / rev_extent[1]);
-    
+
     sub_g.append('rect')
       .attr('id','vert-line')
       .attr("x", vert_line_pos )
@@ -1113,7 +1113,7 @@ md`
       .attr('width', 0.25)
       .attr('height', plot_size+25)
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .6).attr('fill', d3.hcl(240,15,68));
-     
+
     sub_g.append('rect')
       .attr('id','rr-inset')
       .attr("x", tx + 5 )
@@ -1122,7 +1122,7 @@ md`
       .attr('height', 35)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-     
+
     sub_g.append('text')
      .attr('id','text-inset1')
      .attr("x", tx + 12)
@@ -1130,7 +1130,7 @@ md`
      .text("Rating: " + rating)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-   
+
    sub_g.append('text')
      .attr('id','text-inset2')
      .attr("x", tx + 12)
@@ -1138,12 +1138,12 @@ md`
      .text("Revenue: " + rev)
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     let dw_top_rev_diff = 220* Math.abs(rev - dw_top.revenue)/rev_extent[1];
     let disney_top_rev_diff = 220*Math.abs(rev - disney_top.revenue)/rev_extent[1];
     let dw_avg_rev_diff =220* Math.abs(rev - dw_avg.revenue)/rev_extent[1];
     let disney_avg_rev_diff =220* Math.abs(rev - disney_avg.revenue)/rev_extent[1];
-    
+
     // light squares for comparison
     g.append('rect')
     .attr("class","hover_compare")
@@ -1152,7 +1152,7 @@ md`
     .attr('width', dw_top_rev_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(240,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", rev > disney_top.revenue ?  vert_line_pos - disney_top_rev_diff : vert_line_pos)
@@ -1160,7 +1160,7 @@ md`
     .attr('width', disney_top_rev_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(240,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", rev > dw_avg.revenue ? vert_line_pos - dw_avg_rev_diff : vert_line_pos)
@@ -1168,7 +1168,7 @@ md`
     .attr('width', dw_avg_rev_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(240,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     g.append('rect')
     .attr("class","hover_compare")
     .attr("x", rev > disney_avg.revenue ?  vert_line_pos - disney_avg_rev_diff : vert_line_pos)
@@ -1176,7 +1176,7 @@ md`
     .attr('width', disney_avg_rev_diff )
     .attr('height', 10)
     .attr('fill', d3.hcl(240,15,95)).attr('stroke', d3.hcl(0,0,60)).attr('stroke-width', .8);
-    
+
     // comparison texts and surrounding rects
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1186,7 +1186,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio1 = ( Math.abs(rev - dw_top.revenue)/ rev * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -1195,7 +1195,7 @@ md`
      .text(rev > dw_top.revenue ? ratio1 + "% less revenue" : ratio1 + "% more revenue")
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------2
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1205,7 +1205,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio2 = ( Math.abs(rev - disney_top.revenue)/ rev * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -1214,7 +1214,7 @@ md`
      .text(rev > disney_top.revenue ? ratio2 + "% less revenue" : ratio2 + "% more revenue")
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------3
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1224,7 +1224,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio3 = ( Math.abs(rev - dw_avg.revenue)/ rev * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -1233,7 +1233,7 @@ md`
      .text(rev > dw_avg.revenue ? ratio3 + "% less revenue" : ratio3 + "% more revenue")
      .attr("font-size", "12px")
      .attr("font-weight", "italic");
-    
+
     // --------4
     g.append('rect')
       .attr('class','text-compare-rect')
@@ -1243,7 +1243,7 @@ md`
       .attr('height', 25)
       .attr('fill', d3.hcl(200,20,65))
       .attr('stroke', d3.hcl(0,0,40)).attr('stroke-width', .7).attr('fill', d3.hcl(0,0,95));
-    
+
     let ratio4 = ( Math.abs(rev - disney_avg.revenue)/ rev * 100) .toFixed(1);
     g.append('text')
      .attr('class','text_compare')
@@ -1252,27 +1252,27 @@ md`
      .text(rev > disney_avg.revenue ? ratio4 + "% less revenue" : ratio4 + "% more revenue")
      .attr("font-size", "12px")
      .attr("font-weight", "italic")
-     
+
    });
-  
+
   g.selectAll('.bot-rev-rect').on('mousemove', function(d) {
      let mouse_cursor = d3.mouse(this);
      let tx = mouse_cursor[0];
      let ty = mouse_cursor[1] + pixar_film_scale(d.title);
-      
+
     g.select('#rr-inset')
       .attr("x", tx + 5 )
       .attr("y", ty + 5);
-    
+
     g.select('#text-inset1')
       .attr("x", tx + 12 )
       .attr("y", ty + 18);
-    
+
     g.select('#text-inset2')
       .attr("x", tx + 12 )
       .attr("y", ty + 33)
   });
-  
+
   g.selectAll('.bot-rev-rect').on('mouseout', function(d)  {
     g.select('#vert-line').remove();
     g.select('#rr-inset').remove();
@@ -1282,7 +1282,7 @@ md`
     g.selectAll(".text_compare").remove();
     g.selectAll(".text-compare-rect").remove()
   })
-    
+
  }
 )});
   main.variable(observer()).define(["md"], function(md){return(
@@ -1368,12 +1368,12 @@ md`
 )});
   main.variable(observer("trimmed_pixar")).define("trimmed_pixar", ["pixar_json","parseTime","year_threshold"], function(pixar_json,parseTime,year_threshold)
 {
-  
+
   let res = [];
   for (let item of pixar_json) {
     let year = parseTime(item.release_date).getFullYear();
     if (year <= year_threshold[1] && year >= year_threshold[0]) {
-      res.push(item) 
+      res.push(item)
     }
   }
   return res
@@ -1383,7 +1383,7 @@ md`
 {
    let res = trimmed_pixar;
   switch (order) {
-    
+
     case "Alphabetically": res.sort((a, b) => a.title.localeCompare(b.title)); break;
     case "Chronologically": res.sort((a, b) => parseTime(a.release_date) - parseTime(b.release_date) ); break;
     case "Reverse-Chronologically": res.sort((a, b) => parseTime(b.release_date) - parseTime(a.release_date) ); break;
@@ -1394,18 +1394,18 @@ md`
     case "Ascending Rating": res.sort((a, b) => a.rating - b.rating); break;
     case "Descending Rating": res.sort((a, b) => b.rating - a.rating); break;
   }
-  
+
   return res;
 }
 );
   main.variable(observer("disney_data")).define("disney_data", ["disney_json","parseTime","year_threshold"], function(disney_json,parseTime,year_threshold)
 {
-  
+
   let res = [];
   for (let item of disney_json) {
     let year = parseTime(item.date_published).getFullYear();
     if (year <= year_threshold[1] && year >= year_threshold[0]) {
-      res.push(item) 
+      res.push(item)
     }
   }
   return res
@@ -1439,17 +1439,17 @@ md`
   })
  }
  else return {}
-  
+
 }
 );
   main.variable(observer("dw_data")).define("dw_data", ["dw_json","parseTime","year_threshold"], function(dw_json,parseTime,year_threshold)
 {
-  
+
   let res = [];
   for (let item of dw_json) {
     let year = parseTime(item.release_date).getFullYear();
     if (year <= year_threshold[1] && year >= year_threshold[0]) {
-      res.push(item) 
+      res.push(item)
     }
   }
   return res
@@ -1457,6 +1457,13 @@ md`
 );
   main.variable(observer("dw_avg")).define("dw_avg", ["dw_data"], function(dw_data)
 {
+    if (!dw_data.length) return {
+        "rating": 0,
+        "revenue": 0,
+        "budget": 0,
+        "title": "DreamWorks Average"
+    }
+
   let budget = 0, revenue = 0, rating = 0;
   for (let item of dw_data) {
     budget += item.budget;
@@ -1475,19 +1482,29 @@ md`
   }
 }
 );
-  main.variable(observer("dw_top")).define("dw_top", ["dw_data"], function(dw_data){return(
-dw_data.length ? dw_data.reduce(function(a,b) {
-  return a.revenue > b.revenue ? a : b
-  // return (a.revenue - a.budget) / a.budget > (b.revenue - b.budget) / b.budget ? a : b
-}) : []
-)});
+    main.variable(observer("dw_top")).define("dw_top", ["dw_data"], function(dw_data)
+        {
+            if (dw_data.length) {
+                return dw_data.reduce(function(a,b) {
+                    return a.revenue > b.revenue ? a : b
+                })
+            }
+            else return {
+                "rating": 0,
+                "revenue": 0,
+                "budget": 0,
+                "title": "None"
+            }
+
+        }
+    );
   main.variable(observer("compare_arr")).define("compare_arr", ["dw_top","disney_top","dw_avg","disney_avg"], function(dw_top,disney_top,dw_avg,disney_avg)
 {
   let blank_label = {"title" : " "};
   let disney_top_label = {"title": "Disney top film in time range"};
   let dw_top_label = {"title": "DreamWorks top film in time range"};
   return [dw_top, dw_top_label, disney_top, disney_top_label, dw_avg, blank_label, disney_avg ]
-  
+
 }
 );
   main.variable(observer("all_data")).define("all_data", ["disney_avg","dw_avg","disney_top","dw_top","pixar_data"], function(disney_avg,dw_avg,disney_top,dw_top,pixar_data)

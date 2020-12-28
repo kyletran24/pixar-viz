@@ -2,17 +2,22 @@
 <meta charset="utf-8">
 <title>Analysis of the success of Pixar movies against popular competitors</title>
 <h1>Analysis of the success of Pixar movies against popular competitors</h1>
+<h4>This is a solo project I worked on in Data Visualization (CS3281) class at Vanderbilt
+    University, taught by Professor Matthew Berger.</h4>
+<h4>I used D3 and SVG frameworks on the
+    Observable platform and deployed using AWS.</h4>
 
-<link href="./inspector.css" rel="stylesheet" type="text/css">
-<link href="./index.css" rel="stylesheet" type="text/css">
+<link href="static/inspector.css" rel="stylesheet" type="text/css">
+<link href="static/index.css" rel="stylesheet" type="text/css">
 <body>
 <div id="year_threshold"></div>
 <div id="order"></div>
 <div id="main_plot"></div>
+</body>
 <script type="module">
 
-    import define from "./index.js";
-    import {Runtime, Library, Inspector} from "./runtime.js";
+    import define from "/static/index.js";
+    import {Runtime, Library, Inspector} from "./static/runtime.js";
 
     const runtime = new Runtime();
 

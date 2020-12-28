@@ -1,6 +1,6 @@
 {
   "name": "e4c1cd3cc512dbf5",
-  "main": "e4c1cd3cc512dbf5@1659.js",
+  "main": "static/e4c1cd3cc512dbf5@1659.js",
   "version": "1659.0.0",
   "homepage": "https://observablehq.com/d/e4c1cd3cc512dbf5",
   "author": {
@@ -10,5 +10,8 @@
   "type": "module",
   "peerDependencies": {
     "@observablehq/runtime": "4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
