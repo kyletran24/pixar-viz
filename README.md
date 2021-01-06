@@ -1,6 +1,6 @@
 # Analysis of the success of Pixar movies against popular competitors
 
-This is a solo project I worked on in Data Visualization (CS3281) class at Vanderbilt University taught by Professor Matthew Berger, using D3 and SVG frameworks on the Observable platform
+This is a solo project I worked on in Data Visualization (CS3281) class at Vanderbilt University taught by Professor Matthew Berger, using the D3 library and SVG on the Observable platform. I deployed this project to kylepixarviz.com using Node.js, AWS and nginx.
 
 ## Background and Motivaton 
 
